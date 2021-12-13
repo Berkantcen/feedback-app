@@ -1,9 +1,11 @@
 import React from 'react'
+import { useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import FeedbackItem from './FeedbackItem'
-import PropTypes from 'prop-types'
+import FeedbackContext from '../context/FeedbackContext'
 
-const FeedbackList = ({ feedbacks, handleDelete }) => {
+const FeedbackList = () => {
+  const { feedbacks } = useContext(FeedbackContext)
   if (!feedbacks || feedbacks.length === 0) {
     return <p>No Feedback Available</p>
   }
@@ -18,20 +20,12 @@ const FeedbackList = ({ feedbacks, handleDelete }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <FeedbackItem
-              feedback={feedback}
-              key={feedback.id}
-              handleDelete={handleDelete}
-            />
+            <FeedbackItem feedback={feedback} key={feedback.id} />
           </motion.div>
         ))}
       </AnimatePresence>
     </div>
   )
-}
-
-FeedbackList.propTypes = {
-  feedbacks: PropTypes.array.isRequired,
 }
 
 export default FeedbackList
