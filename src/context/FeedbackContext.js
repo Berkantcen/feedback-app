@@ -20,7 +20,6 @@ export const FeedbackProvider = ({ children }) => {
     const feedbackData = await response.json()
     setFeedback(feedbackData)
     setIsLoading(false)
-    console.log('fired')
   }
 
   // Edit feedback
