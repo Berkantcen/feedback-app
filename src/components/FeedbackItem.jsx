@@ -10,7 +10,13 @@ const FeedbackItem = ({ feedback }) => {
   return (
     <Card>
       <div className='num-display'>{feedback.rating}</div>
-      <button onClick={() => feedbackDelete(feedback.id)} className='close'>
+      <button
+        onClick={(e) => {
+          e.preventDefault()
+          feedbackDelete(feedback.id)
+        }}
+        className='close'
+      >
         <FaTimes color='purple' />
       </button>
       <button onClick={() => editFeedback(feedback)} className='edit'>
